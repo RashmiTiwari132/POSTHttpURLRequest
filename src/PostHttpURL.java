@@ -3,8 +3,8 @@ import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
 import javax.net.ssl.HttpsURLConnection;
+import org.json.JSONObject;
 
 
 public class PostHttpURL {
@@ -32,7 +32,7 @@ public class PostHttpURL {
 	private void sendPost() throws Exception {
 		
 
-		String url = "http://104.199.128.27:8080/japp/auth/test";
+		String url = "http://104.199.128.27:8080/japp/auth/test3";
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		
@@ -43,10 +43,17 @@ public class PostHttpURL {
 		
 		String urlParameters = "sn=C02G8416DRJM&cn=&locale=&caller=&num=12345";
 		
+		JSONObject user = new JSONObject();
+		JSONObject auth=new JSONObject();
+		JSONObject parent=new JSONObject();
+		user.put("userid","test");
+		user.put("name", "test");
+		parent.put("user", user);
+		
 		//send post request 
 		con.setDoOutput(true);
 		DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-		wr.writeBytes(urlParameters);
+		wr.writeBytes(parent.toString());
 		wr.flush();
 		wr.close();
 		
