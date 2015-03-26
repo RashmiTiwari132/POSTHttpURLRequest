@@ -46,7 +46,7 @@ public class PostHttpURL {
 		JSONObject user = new JSONObject();
 		JSONObject auth=new JSONObject();
 		JSONObject parent=new JSONObject();
-		user.put("userid","test");
+		user.put("userd","test");
 		user.put("name", "test");
 		parent.put("user", user);
 		
