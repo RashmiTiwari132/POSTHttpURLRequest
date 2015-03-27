@@ -37,29 +37,28 @@ public class PostHttpURL {
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		
 		//add request header
+		con.setRequestProperty("Content-Type", "application/json");
+		con.setRequestProperty("Accept", "application/json");
 		con.setRequestMethod("POST");
 		con.setRequestProperty("User-Agent", USER_AGENT);
 		con.setRequestProperty("Accept-Language","en-US,en;q=0.5");
 		
-		String urlParameters = "sn=C02G8416DRJM&cn=&locale=&caller=&num=12345";
+		//String urlParameters = "sn=C02G8416DRJM&cn=&locale=&caller=&num=12345";
 		
 		JSONObject user = new JSONObject();
-		JSONObject auth=new JSONObject();
-		JSONObject parent=new JSONObject();
-		user.put("userd","test");
-		user.put("name", "test");
-		parent.put("user", user);
+		user.put("userid","avikodak");
+		user.put("name", "avinash");
 		
 		//send post request 
 		con.setDoOutput(true);
 		DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-		wr.writeBytes(parent.toString());
+		wr.writeBytes(user.toString());
 		wr.flush();
 		wr.close();
 		
 		int responseCode = con.getResponseCode();
 		System.out.println("\nSending 'POST' request URL : " + url);
-		System.out.println("Post parameters : " + urlParameters);
+		System.out.println("JSON parameters : " + user.toString());
 		System.out.println("Response Code : " + responseCode);
 		
 		BufferedReader in = new BufferedReader(
@@ -74,6 +73,7 @@ public class PostHttpURL {
 		
 		//print result
 		System.out.println("response" + response.toString());
+
 	}
 
 }
