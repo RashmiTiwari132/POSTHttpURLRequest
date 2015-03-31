@@ -46,7 +46,7 @@ public class PostHttpURL {
 		//String urlParameters = "sn=C02G8416DRJM&cn=&locale=&caller=&num=12345";
 		
 		JSONObject user = new JSONObject();
-		user.put("userid","avikodak");
+		user.put("userId","avikodak");
 		user.put("name", "avinash");
 		
 		//send post request 
@@ -73,7 +73,6 @@ public class PostHttpURL {
 		
 		//print result
 		System.out.println("response" + response.toString());
-
 	}
 
 }
